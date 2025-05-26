@@ -1,0 +1,621 @@
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 18px;
+
+    /* Dark Mode Variables */
+    --dark-background: #121212;
+    --dark-text: #e0e0e0;
+    --dark-card-background: #1e1e1e;
+    --dark-very-light-pink-substitute: #555555;
+    --dark-text-input-field: #2a2a2a;
+    --dark-hospital-green-substitute: #81c784; /* A bit brighter for dark bg */
+    --dark-white-substitute: #121212; /* Dark background will be the new "white" */
+    --dark-black-substitute: #e0e0e0; /* Light text will be the new "black" */
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    background-color: var(--white); /* Default light mode background */
+    color: var(--black); /* Default light mode text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+body[data-theme="dark"] {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+
+/* Component-specific dark mode overrides */
+
+body[data-theme="dark"] .input {
+    background-color: var(--dark-text-input-field);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-very-light-pink-substitute);
+}
+
+body[data-theme="dark"] .primary-button {
+    background-color: var(--hospital-green); /* Assuming this green works on dark, else use substitute */
+    color: var(--black); /* Text color for primary button, ensure contrast */
+}
+
+body[data-theme="dark"] .secondary-buttom {
+    background-color: var(--dark-card-background);
+    border: 1px solid var(--hospital-green); /* Or --dark-hospital-green-substitute */
+    color: var(--hospital-green); /* Or --dark-hospital-green-substitute */
+}
+
+body[data-theme="dark"] .subtitle {
+    color: var(--dark-very-light-pink-substitute);
+}
+
+body[data-theme="dark"] .value { /* From clase5.html */
+    color: var(--dark-very-light-pink-substitute);
+}
+
+body[data-theme="dark"] .form a { /* From clase3.html */
+    color: var(--dark-hospital-green-substitute);
+}
+
+body[data-theme="dark"] .resend a { /* From clase2.html */
+    color: var(--dark-hospital-green-substitute);
+}
+
+body[data-theme="dark"] .resend span { /* From clase2.html */
+    color: var(--dark-very-light-pink-substitute);
+}
+
+
+/* Product card and info */
+body[data-theme="dark"] .product-card {
+    background-color: var(--dark-card-background);
+    /* Add box-shadow if needed for depth, e.g., box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+body[data-theme="dark"] .product-info div p:nth-child(1) { /* Product price */
+    color: var(--dark-text);
+}
+
+body[data-theme="dark"] .product-info div p:nth-child(2) { /* Product name */
+    color: var(--dark-very-light-pink-substitute);
+}
+
+/* Desktop Menu */
+body[data-theme="dark"] .desktop-menu {
+    background-color: var(--dark-card-background);
+    border: 1px solid var(--dark-very-light-pink-substitute);
+}
+
+body[data-theme="dark"] .desktop-menu ul li a {
+    color: var(--dark-text);
+}
+
+body[data-theme="dark"] .desktop-menu ul li:last-child a {
+    color: var(--dark-hospital-green-substitute);
+}
+
+/* Mobile Menu */
+body[data-theme="dark"] .mobile-menu {
+    background-color: var(--dark-background); /* Or --dark-card-background if it's a popup */
+}
+
+body[data-theme="dark"] .mobile-menu a {
+    color: var(--dark-text);
+}
+body[data-theme="dark"] .mobile-menu .email {
+    color: var(--dark-very-light-pink-substitute) !important; /* Keep !important if necessary */
+}
+
+body[data-theme="dark"] .mobile-menu .sign-out {
+    color: var(--dark-hospital-green-substitute) !important; /* Keep !important if necessary */
+}
+
+body[data-theme="dark"] .mobile-menu ul:nth-child(1) { /* Category links border */
+    border-bottom: 1px solid var(--dark-very-light-pink-substitute);
+}
+
+
+/* My Order / Shopping Cart */
+body[data-theme="dark"] .my-order-container .tittle { /* Ensure title on "My Order" page is correct */
+    color: var(--dark-text);
+}
+body[data-theme="dark"] .order {
+    background-color: var(--dark-card-background);
+}
+
+body[data-theme="dark"] .order p span:nth-child(1) { /* Order date/item count */
+    color: var(--dark-text);
+}
+body[data-theme="dark"] .order p span:nth-child(2) {
+    color: var(--dark-very-light-pink-substitute);
+}
+body[data-theme="dark"] .order p:nth-child(2) { /* Order total price */
+    color: var(--dark-text);
+}
+
+body[data-theme="dark"] .shopping-cart {
+    /* No specific background, inherits from page or container */
+}
+body[data-theme="dark"] .shopping-cart p:nth-child(2) { /* Product name in cart */
+    color: var(--dark-very-light-pink-substitute);
+}
+body[data-theme="dark"] .shopping-cart p:nth-child(3) { /* Product price in cart */
+    color: var(--dark-text);
+}
+
+/* General text elements if not covered by body color */
+body[data-theme="dark"] .title { /* For general titles */
+    color: var(--dark-text);
+}
+body[data-theme="dark"] .label { /* For form labels */
+    color: var(--dark-text);
+}
+
+/* Ensure icons are visible in dark mode if they are SVGs styled with currentcolor or specific fills */
+body[data-theme="dark"] figure img[src$=".svg"] {
+    /* Example: if SVGs are black and not visible on dark background */
+    /* filter: invert(1) hue-rotate(180deg); */ /* This is a generic way, might need specific handling */
+}
+
+
+/* Styles from clase1.html & common login/form styles */
+.login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.form-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 300px;
+    /* justify-items: center; /* From clase2.html */
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 48px;
+    justify-self: center;
+    display: none; /* Default, overridden by media query */
+}
+
+.title { /* Base style, can be overridden */
+    font-size: var(--lg);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--very-light-pink);
+    font-size: var(--md);
+    font-weight: 300;
+    margin-bottom: 32px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: var(--sm);
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.input {
+    background-color: var(--text-input-field);
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    font-size: var(--md);
+    padding: 6px;
+    margin-bottom: 12px; /* Default, can be overridden */
+}
+
+.primary-button { /* Also .primary-buttom in clase2 - using this spelling */
+    background-color: var(--hospital-green);
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    /* height: 100%; /* This might be too aggressive globally, often height is 50px */
+    width: 100%; /* from .primary-buttom in clase2 */
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 50px; /* Common value */
+}
+
+.login-button { /* Specific use of primary-button */
+    margin-top: 14px;
+    margin-bottom: 30px;
+}
+
+/* Styles from clase2.html */
+.form-container { /* Adding justify-items from clase2 */
+    justify-items: center;
+}
+
+.email-image {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background-color: var(--text-input-field);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.email-image img {
+    width: 80px;
+}
+
+.resend {
+    font-size: var(--sm);
+    margin-top: 32px; /* from clase2.html */
+}
+
+.resend span {
+    color: var(--very-light-pink);
+}
+
+.resend a {
+    color: var(--hospital-green);
+    text-decoration: none;
+}
+
+/* Styles from clase3.html */
+.input-email { /* More specific input style */
+    margin-bottom: 22px;
+}
+
+.form a { /* Style for links directly inside a form */
+    color: var(--hospital-green);
+    font-size: var(--sm);
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 32px; /* from clase3.html */
+}
+
+.secondary-buttom { /* Assuming "buttom" is intended, or should be "button" */
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--hospital-green);
+    color: var(--hospital-green);
+    /* height: 100%; */ /* Similar to primary-button, 50px is common */
+    width: 100%; /* To make it consistent with primary-button */
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 50px;
+}
+
+/* Styles from clase4.html */
+.title { /* Override for clase4.html */
+    /* font-size: var(--lg); */ /* already defined */
+    margin-bottom: 36px;
+    text-align: start;
+}
+
+.form div { /* For grouping labels and inputs in clase4.html */
+    display: flex;
+    flex-direction: column;
+}
+
+.input { /* General input, clase4.html had a larger margin */
+    /* background-color: var(--text-input-field); */ /* ... already defined ... */
+    margin-bottom: 32px; /* Override for clase4's specific inputs */
+}
+
+/* Specific input margins from clase4, covered by the .input override above now */
+/* input-name, .input-email, .input-password { margin-bottom: 32px; } */
+/* If input-name is a class, it should be .input-name */
+.input-name {  /* Assuming it's a class */
+    margin-bottom: 32px;
+}
+.input-password { /* Assuming it's a class */
+    margin-bottom: 32px;
+}
+
+
+/* Styles from clase5.html */
+.value {
+    color: var(--very-light-pink);
+    font-size: var(--md);
+    margin: 8px 0px 32px 0px;
+}
+/* .secondary-buttom and .login-button are already defined */
+
+/* Styles from clase6.html - Product listing */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 26px;
+    place-content: center;
+    /* margin: 20px 0 0 0; */ /* Optional: add some margin if needed */
+}
+
+.product-card {
+    width: 240px;
+}
+
+.product-card img {
+    width: 100%; /* Make image responsive within the card */
+    height: 240px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.product-card figure {
+    margin: 0;
+}
+
+.product-card figure img { /* Icon inside product card */
+    width: 35px;
+    height: 35px;
+}
+
+.product-info div p:nth-child(1) {
+    font-weight: bold;
+    font-size: var(--md);
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+.product-info div p:nth-child(2) {
+    color: var(--very-light-pink);
+    font-size: var(--sm); /* Typically price/details are smaller */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Styles from clase7.html - Desktop Menu */
+.desktop-menu {
+    width: 100px; /* Original width */
+    height: auto;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 6px;
+    padding: 20px 20px 0 20px;
+    /* position: absolute; */ /* Example: if it's a dropdown */
+    /* top: 60px; */
+    /* right: 60px; */
+    /* background-color: var(--white); */
+    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.1); */
+}
+
+.desktop-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.desktop-menu ul li {
+    text-align: end;
+}
+
+.desktop-menu ul li:not(:last-child) { /* Add margin to all but last item */
+    margin-bottom: 20px;
+}
+
+.desktop-menu ul li:nth-child(1) a, /* Using anchor for specificity */
+.desktop-menu ul li:nth-child(2) a {
+    font-weight: bold;
+}
+
+.desktop-menu ul li:last-child {
+    padding-top: 20px;
+    border-top: 1px solid var(--very-light-pink);
+}
+
+.desktop-menu ul li:last-child a {
+    color: var(--hospital-green);
+    font-size: var(--sm);
+}
+
+.desktop-menu ul li a {
+    color: var(--black);
+    text-decoration: none;
+    /* display: inline-block; */ /* Removed, margin on li is better */
+}
+
+/* Styles from clase8.html - Mobile Menu */
+.mobile-menu {
+    padding: 24px;
+    /* width: 100%; */ /* Example: if it's a full screen menu */
+    /* background-color: var(--white); */
+}
+
+.mobile-menu a { /* General link style in mobile menu */
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    font-size: var(--md); /* Making it consistent */
+}
+
+.mobile-menu ul {
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+}
+
+.mobile-menu ul:nth-child(1) { /* Category links */
+    border-bottom: 1px solid var(--very-light-pink);
+    padding-bottom: 24px; /* Add some padding below the border */
+}
+
+/* .mobile-menu ul:nth-child(2) { margin-top: 50px; } /* This was for Account/Orders */
+/* .mobile-menu ul:nth-child(3) { margin-top: 100px; } /* This was for email/sign out */
+/* The above margins create large gaps, can be adjusted or handled by li margins */
+
+.mobile-menu ul li {
+    margin-bottom: 24px;
+}
+
+.mobile-menu .email { /* Specific class for email, not just any <a> */
+    font-size: var(--sm);
+    font-weight: 300 !important; /* !important was there, keeping it if necessary */
+}
+
+.mobile-menu .sign-out { /* Specific class for sign out */
+    font-size: var(--sm);
+    color: var(--hospital-green) !important; /* !important was there */
+}
+
+/* Styles from clase9.html - My Order / Shopping Cart */
+.my-order { /* Page container */
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.my-order-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 300px;
+}
+
+.my-order-content {
+    display: flex;
+    flex-direction: column;
+    /* gap: 24px; */ /* Spacing between order summary and items */
+}
+
+.tittle { /* From clase9, potentially "title" typo */
+    font-size: var(--lg);
+    font-weight: bold; /* Titles are usually bold */
+    margin-bottom: 40px;
+    /* text-align: left; */ /* Often titles on pages are left-aligned */
+}
+
+.order { /* Order summary box */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--text-input-field);
+    margin-bottom: 24px;
+    border-radius: 8px;
+    padding: 16px 24px; /* Added some vertical padding */
+}
+
+.order p:nth-child(1) { /* Date and item count */
+    display: flex;
+    flex-direction: column;
+}
+
+.order p:nth-child(1) span:nth-child(1) { /* Date */
+    font-size: var(--md);
+    font-weight: bold;
+}
+
+.order p:nth-child(1) span:nth-child(2) { /* Item count */
+    font-size: var(--sm);
+    color: var(--very-light-pink);
+}
+
+.order p:nth-child(2) { /* Total price */
+    text-align: end;
+    font-weight: bold;
+    font-size: var(--md); /* Making price more prominent */
+}
+
+.shopping-cart { /* Individual item in cart view */
+    display: grid;
+    grid-template-columns: auto 1fr auto auto; /* Figure, Name, Price, CloseIcon(optional) */
+    gap: 16px;
+    margin-bottom: 16px; /* Reduced margin between items */
+    align-items: center;
+}
+
+.shopping-cart figure {
+    margin: 0;
+}
+
+.shopping-cart figure img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px; /* Softer radius for product images in cart */
+    object-fit: cover;
+}
+
+.shopping-cart p:nth-child(2) { /* Product name */
+    color: var(--very-light-pink);
+    font-size: var(--sm);
+}
+
+.shopping-cart p:nth-child(3) { /* Product price */
+    font-size: var(--md);
+    font-weight: bold;
+}
+
+/* Media Queries from various files - consolidated */
+@media (max-width: 640px) {
+    .logo { /* From clase1.html */
+        display: block;
+    }
+
+    /* From clase3.html */
+    /* .form { height: 100%; }  This might be too specific, check usage */
+    .secondary-buttom { /* clase3.html specific @media style for .secondary-buttom */
+        /* position: absolute; bottom: 24px; width: 300px; */ /* This is very specific, might break layout if not on that exact page structure */
+        width: calc(100% - 48px); /* Example: make it full width with padding */
+        position: fixed; /* Example for a sticky button at bottom */
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+
+    }
+
+    /* From clase4.html */
+    .form-container { /* clase4.html & clase5.html specific @media style for .form-container */
+         /* height: 100%; */ /* Can conflict if not all form pages are full height */
+    }
+    .form { /* clase4.html & clase5.html specific @media style for .form */
+        /* height: 100%; */
+        /* justify-content: space-between; */ /* Only if the form has distinct top/bottom sections */
+    }
+
+    /* From clase6.html - Product listing */
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, 140px);
+        /* gap: 26px; */ /* Already defined */
+    }
+
+    .product-card {
+        width: 140px;
+    }
+
+    .product-card img {
+        height: 140px; /* Width is 100% of card */
+    }
+
+    /* Additional mobile considerations */
+    .desktop-menu {
+        display: none; /* Hide desktop menu on small screens */
+    }
+    .title { /* Adjust title for mobile if needed */
+        font-size: var(--md); /* Example: smaller title on mobile */
+        margin-bottom: 24px;
+    }
+    .my-order-container {
+        width: 90%; /* More responsive width for order page */
+    }
+}
